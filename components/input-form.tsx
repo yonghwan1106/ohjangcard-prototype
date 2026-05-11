@@ -211,10 +211,7 @@ export default function InputForm({
           )}
         </Button>
         <p className="text-xs text-neutral-600 leading-relaxed text-center">
-          Claude Haiku 4.5가 5초 이내에 5종 카드를 생성합니다.{" "}
-          <span className="text-neutral-500">
-            ANTHROPIC_API_KEY 미설정 시 fallback 카드 반환.
-          </span>
+          Claude Haiku 4.5가 5초 이내에 5종 카드를 생성합니다.
         </p>
       </div>
     </form>
