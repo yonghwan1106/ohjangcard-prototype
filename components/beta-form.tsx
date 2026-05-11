@@ -30,7 +30,7 @@ const stats = [
 
 export default function BetaForm() {
   const formRef = React.useRef<HTMLFormElement>(null);
-  const [industry, setIndustry] = React.useState<string | null>("");
+  const [industry, setIndustry] = React.useState<string | undefined>(undefined);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -38,7 +38,7 @@ export default function BetaForm() {
       "베타 신청 완료! 곧 박용환 운영자가 연락드리겠습니다. 감사합니다."
     );
     formRef.current?.reset();
-    setIndustry("");
+    setIndustry(undefined);
   }
 
   return (
@@ -83,7 +83,7 @@ export default function BetaForm() {
                 className="size-5 text-brand-600 mx-auto mb-2"
                 aria-hidden="true"
               />
-              <div className="text-lg lg:text-2xl font-extrabold text-neutral-900 tracking-tight">
+              <div className="text-base lg:text-2xl font-extrabold text-neutral-900 tracking-tight">
                 {value}
               </div>
               <div className="text-[11px] lg:text-xs text-neutral-600 font-medium mt-0.5">
@@ -120,7 +120,7 @@ export default function BetaForm() {
                 >
                   업종
                 </Label>
-                <Select value={industry} onValueChange={setIndustry}>
+                <Select value={industry || undefined} onValueChange={(v) => setIndustry(v ?? undefined)}>
                   <SelectTrigger
                     id="industry"
                     className="h-11 w-full rounded-xl border-neutral-300 focus-visible:border-brand-500 focus-visible:ring-brand-200"
