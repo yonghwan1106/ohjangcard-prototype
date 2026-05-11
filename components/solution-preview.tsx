@@ -7,7 +7,7 @@ import type { CardOutput } from "@/lib/schema";
 
 const SAMPLE_DATA: CardOutput = {
   menu: {
-    title: "오늘 밀 메뉴 · 따뜻한 토마토 수프 세트",
+    title: "오늘 밀 메뉴 · 클럽샌드 + 토마토 수프 세트",
     items: [
       {
         name: "토마토 수프 + 클럽샌드 세트",

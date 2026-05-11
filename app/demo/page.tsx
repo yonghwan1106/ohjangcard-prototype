@@ -321,7 +321,7 @@ export default function DemoPage() {
                 <span className="text-xs font-bold text-brand-700 tabular-nums">
                   {elapsed.toFixed(1)}초
                 </span>
-                <span className="text-xs text-brand-700">/ 평균 5~8초</span>
+                <span className="text-xs text-brand-700">/ 평균 3~6초</span>
               </div>
             </div>
           </section>
