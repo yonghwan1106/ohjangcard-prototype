@@ -86,7 +86,7 @@ export async function POST(req: Request) {
     const userMsg = buildUserMessage(parsed.data, persona);
     const resp = await anthropic.messages.create({
       model: MODEL_ID,
-      max_tokens: 2048,
+      max_tokens: 4096,
       system: [
         {
           type: "text",
@@ -94,18 +94,23 @@ export async function POST(req: Request) {
           cache_control: { type: "ephemeral" },
         },
       ],
-      messages: [{ role: "user", content: userMsg }],
+      messages: [
+        { role: "user", content: userMsg },
+        { role: "assistant", content: "{" },
+      ],
+      stop_sequences: ["\n\nHuman:", "```"],
     });
 
-    const text = resp.content
+    const text = "{" + resp.content
       .filter((b) => b.type === "text")
       .map((b) => (b as { type: "text"; text: string }).text)
       .join("");
 
     const first = text.indexOf("{");
     const last = text.lastIndexOf("}");
-    const json =
+    let json =
       first >= 0 && last > first ? text.slice(first, last + 1) : text;
+    json = json.trim();
 
     let parsedOutput: unknown;
     try {
